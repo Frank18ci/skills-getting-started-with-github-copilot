@@ -118,7 +118,8 @@ class TestSignupForActivity:
         initial_count = len(initial_participants)
         
         # Sign up
-        client.post(f"/activities/{activity_name}/signup?email={email}")
+        response = client.post(f"/activities/{activity_name}/signup?email={email}")
+        assert response.status_code == 200
         
         # Check participant was added
         updated_response = client.get("/activities")
