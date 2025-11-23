@@ -42,9 +42,8 @@ def reset_activities():
     yield
     
     # Restore original state after test
-    for name, details in original_activities.items():
-        if name in activities:
-            activities[name]["participants"] = details["participants"].copy()
+    activities.clear()
+    activities.update(original_activities)
 
 
 class TestRootEndpoint:
